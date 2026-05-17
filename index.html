@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>Anime Hero | Shadow History</title>
+
+<!-- FONTS -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Montserrat',sans-serif;
+    background:#fff;
+    overflow-x: hidden;
+}
+
+/* ================================= */
+/* MAIN HERO - YOUR ORIGINAL (UNCHANGED) */
+/* ================================= */
+
+.hero{
+    position:relative;
+    width:100%;
+    height:100vh;
+    overflow:hidden;
+    background:white;
+}
+
+/* ================================= */
+/* ANIME BACKGROUND */
+/* ================================= */
+
+
+.grid{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background-image:
+    linear-gradient(rgba(0,0,0,.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0,0,0,.03) 1px, transparent 1px);
+    background-size:60px 60px;
+    z-index:1;
+}
+
+/* ================================= */
+/* NAVBAR */
+/* ================================= */
+
+nav{
+    position:absolute;
+    top:0;
+    left:0;
+    width:100%;
+    padding:40px 80px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    z-index:100;
+}
+
+.logo{
+    font-size:1.5rem;
+    font-weight:900;
+    letter-spacing:4px;
+    color:#111;
+}
+
+.menu{
+    display:flex;
+    gap:50px;
+}
+
+.menu a{
+    text-decoration:none;
+    color:#111;
+    font-weight:700;
+    font-size:.9rem;
+    letter-spacing:2px;
+    position:relative;
+    cursor:pointer;
+}
+
+.menu a::after{
+    content:'';
+    position:absolute;
+    left:0;
+    bottom:-8px;
+    width:0%;
+    height:2px;
+    background:#ff2d55;
+    transition:.3s;
+}
+
+.menu a:hover::after{
+    width:100%;
+}
+
+/* ================================= */
+/* BIG TEXT BEHIND IMAGE */
+/* ================================= */
+
+.bg-text{
+    position:absolute;
+    top:52%;
+    left:50%;
+    transform:translate(-50%,-50%);
+    font-size:16vw;
+    font-family:'Bebas Neue',sans-serif;
+    color:#111;
+    opacity:.1;
+    letter-spacing:15px;
+    white-space:nowrap;
+    z-index:2;
+    user-select:none;
+}
+
+/* ================================= */
+/* EXTRA TEXT BLOCKS */
+/* ================================= */
+
+.block{
+    position:absolute;
+    background:#111;
+    z-index:5;
+}
+
+.block1{
+    width:240px;
+    height:15px;
+    top:180px;
+    left:-50px;
+    transform:rotate(-35deg);
+    opacity:.08;
+}
+
+.block2{
+    width:180px;
+    height:10px;
+    top:280px;
+    right:120px;
+    transform:rotate(25deg);
+    opacity:.06;
+}
+
+.block3{
+    width:350px;
+    height:12px;
+    bottom:120px;
+    right:-70px;
+    transform:rotate(-25deg);
+    opacity:.08;
+}
+
+.block4{
+    position:absolute;
+    width:120px;
+    height:120px;
+    border:10px solid rgba(0,0,0,.05);
+    top:180px;
+    right:250px;
+    transform:rotate(20deg);
+    z-index:2;
+}
+
+/* ================================= */
+/* CHARACTER */
+/* ================================= */
+
+.character{
+    position:absolute;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:600px;
+    z-index:50;
+    filter: drop-shadow(0 25px 40px rgba(0,0,0,.2));
+}
+
+/* ================================= */
+/* CONTENT */
+/* ================================= */
+
+.content{
+    position:absolute;
+    left:90px;
+    bottom:90px;
+    z-index:100;
+}
+
+.tag{
+    display:inline-block;
+    padding:10px 18px;
+    background:#111;
+    color:white;
+    font-size:.8rem;
+    font-weight:700;
+    letter-spacing:3px;
+    margin-bottom:25px;
+    border-radius:50px;
+}
+
+.content h1{
+    font-size:6rem;
+    line-height:.9;
+    font-weight:900;
+    color:#111;
+    margin-bottom:25px;
+}
+
+.content p{
+    width:450px;
+    line-height:1.8;
+    color:#666;
+    margin-bottom:35px;
+}
+
+/* ================================= */
+/* ANIME BUTTON */
+/* ================================= */
+
+.anime-btn{
+    position:relative;
+    padding:18px 45px;
+    border:none;
+    background:#111;
+    color:white;
+    font-size:.95rem;
+    font-weight:800;
+    letter-spacing:3px;
+    cursor:pointer;
+    overflow:hidden;
+    transition:.4s;
+    border-radius:50px;
+}
+
+.anime-btn::before{
+    content:'';
+    position:absolute;
+    top:0;
+    left:-120%;
+    width:100%;
+    height:100%;
+    background:linear-gradient(120deg, transparent, rgba(255,255,255,.5), transparent);
+    transform:skewX(-30deg);
+    transition:.6s;
+}
+
+.anime-btn:hover::before{
+    left:120%;
+}
+
+.anime-btn:hover{
+    transform:translateY(-5px) scale(1.03);
+    background:#ff2d55;
+    box-shadow: 0 15px 30px rgba(255,45,85,.3);
+}
+
+/* ================================= */
+/* SIDE TEXT */
+/* ================================= */
+
+.side{
+    position:absolute;
+    right:50px;
+    bottom:90px;
+    writing-mode:vertical-rl;
+    font-size:.8rem;
+    letter-spacing:5px;
+    color:#999;
+    z-index:10;
+}
+
+/* ================================= */
+/* FLOAT ANIMATION */
+/* ================================= */
+
+@keyframes float{
+    0%{ transform:translateX(-50%) translateY(0px); }
+    50%{ transform:translateX(-50%) translateY(-14px); }
+    100%{ transform:translateX(-50%) translateY(0px); }
+}
+
+/* ================================= */
+/* HISTORY SECTION - CLEAN & MATCHES YOUR STYLE */
+/* ================================= */
+
+.history{
+    width:100%;
+    background:white;
+    padding:100px 8% 120px;
+}
+
+.history-container{
+    max-width:1200px;
+    margin:0 auto;
+}
+
+.history-header{
+    text-align:center;
+    margin-bottom:70px;
+}
+
+.history-header .history-tag{
+    display:inline-block;
+    padding:8px 20px;
+    background:#111;
+    color:white;
+    font-size:.7rem;
+    font-weight:700;
+    letter-spacing:3px;
+    border-radius:50px;
+    margin-bottom:20px;
+}
+
+.history-header h2{
+    font-size:4rem;
+    font-family:'Bebas Neue',sans-serif;
+    color:#111;
+    letter-spacing:4px;
+}
+
+.history-header h2 span{
+    color:#ff2d55;
+}
+
+.history-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit, minmax(300px, 1fr));
+    gap:40px;
+    margin-bottom:70px;
+}
+
+.history-card{
+    background:#fff;
+    border:1px solid #eee;
+    padding:40px 30px;
+    transition:all 0.4s ease;
+    box-shadow:0 10px 30px rgba(0,0,0,0.02);
+}
+
+.history-card:hover{
+    transform:translateY(-10px);
+    border-color:#ff2d55;
+    box-shadow:0 20px 40px rgba(255,45,85,0.1);
+}
+
+.history-year{
+    font-size:2rem;
+    font-weight:900;
+    font-family:'Bebas Neue',sans-serif;
+    color:#ff2d55;
+    margin-bottom:15px;
+}
+
+.history-card h3{
+    font-size:1.5rem;
+    color:#111;
+    margin-bottom:15px;
+    font-weight:800;
+}
+
+.history-card p{
+    color:#666;
+    line-height:1.8;
+    font-size:.9rem;
+}
+
+.history-quote{
+    text-align:center;
+    padding:50px;
+    background:#fafafa;
+    border-left:4px solid #ff2d55;
+    border-right:4px solid #ff2d55;
+}
+
+.history-quote p{
+    font-size:1.2rem;
+    color:#333;
+    font-style:italic;
+    line-height:1.6;
+    max-width:700px;
+    margin:0 auto;
+}
+
+.history-quote .author{
+    margin-top:20px;
+    font-size:.8rem;
+    color:#999;
+    letter-spacing:2px;
+}
+
+/* scroll animation */
+.scroll-reveal{
+    opacity:0;
+    transform:translateY(40px);
+    transition:0.8s ease;
+}
+
+.scroll-reveal.active{
+    opacity:1;
+    transform:translateY(0);
+}
+
+/* footer */
+.footer{
+    background:#f8f8f8;
+    padding:30px;
+    text-align:center;
+    color:#999;
+    font-size:.75rem;
+    border-top:1px solid #eee;
+}
+
+
+/* ================================= */
+/* MOBILE */
+/* ================================= */
+
+@media(max-width:900px){
+    .character{ width:390px; }
+    .content{ left:30px; bottom:40px; }
+    .content h1{ font-size:3.5rem; }
+    .content p{ width:320px; font-size:.9rem; }
+    nav{ padding:25px; }
+    .menu{ gap:20px; }
+    .bg-text{ font-size:25vw; }
+    .side{ display:none; }
+    .history-header h2{ font-size:2.5rem; }
+    .history-card{ padding:30px 25px; }
+}
+
+@media(max-width:550px){
+    .character{ width:280px; }
+    .content h1{ font-size:2.2rem; }
+    .content p{ width:240px; font-size:.8rem; }
+    .anime-btn{ padding:12px 28px; }
+    .history-quote p{ font-size:1rem; }
+}
+
+</style>
+</head>
+<body>
+
+<section class="hero">
+    <div class="grid"></div>
+    <div class="bg-circle"></div>
+
+    <nav>
+        <div class="logo">ANIME.</div>
+        <div class="menu">
+            <a class="nav-home">HOME</a>
+            <a class="nav-history">HISTORY</a>
+            <a>GALLERY</a>
+        </div>
+    </nav>
+
+    <div class="bg-text">WEB DEVELOPER</div>
+
+    <div class="block block1"></div>
+    <div class="block block2"></div>
+    <div class="block block3"></div>
+    <div class="block4"></div>
+
+    <img src="image.png" class="character" alt="Shadow Hero" onerror="this.src='https://placehold.co/600x800/2c2c3a/ff2d55?text=SHADOW'; this.onerror=null;">
+
+    <div class="content">
+        <div class="tag">ANIME STYLE</div>
+        <h1>LANH<br>PHALLA</h1>
+<p>
+Second-year student passionate about full-stack development,
+modern UI/UX design, and cinematic anime-inspired web experiences.
+I love building clean, interactive websites with creative visuals
+and smooth user experiences.
+</p>        <button class="anime-btn" id="exploreBtn">EXPLORE</button>
+    </div>
+
+    <div class="side">ANIME — 2025</div>
+</section>
+
+<!-- ================================= -->
+<!-- HISTORY SECTION - CLEAN & SIMPLE -->
+<!-- ================================= -->
+<section class="history" id="historySection">
+    <div class="history-container">
+        
+        <div class="history-header scroll-reveal">
+            <div class="history-tag">✦ LEGEND ✦</div>
+            <h2>SHADOW<span>HISTORY</span></h2>
+        </div>
+
+        <div class="history-grid">
+            <div class="history-card scroll-reveal">
+                <div class="history-year">⚔️ 1072</div>
+                <h3>The Crimson Eclipse</h3>
+                <p>The first Shadow Hero rose from the ashes, wielding the ancient Yokai Blade to seal the demon horde and establish the sacred bloodline.</p>
+            </div>
+
+            <div class="history-card scroll-reveal">
+                <div class="history-year">🌀 1894</div>
+                <h3>The Shattered Mask</h3>
+                <p>A great betrayal fractured the ancestral mask, releasing a dual curse — immense power balanced by eternal longing.</p>
+            </div>
+
+            <div class="history-card scroll-reveal">
+                <div class="history-year">🌙 2024</div>
+                <h3>Neon Requiem</h3>
+                <p>In Neo-Tokyo, the latest heir awakened his powers, merging ancient shadow techniques with modern technology.</p>
+            </div>
+        </div>
+
+        <div class="history-quote scroll-reveal">
+            <p>"The brightest shadows are cast by the strongest lights. A hero is not defined by power, but by the will to protect."</p>
+            <div class="author">— Ancient Scrolls</div>
+        </div>
+    </div>
+</section>
+
+<footer class="footer">
+    <p>✦ SHADOW HERO — ANIME LEGACY ✦ | 2025</p>
+</footer>
+
+<script>
+
+/* ================================= */
+/* PARALLAX EFFECT - YOUR ORIGINAL */
+/* ================================= */
+const hero = document.querySelector('.hero');
+const character = document.querySelector('.character');
+const bgText = document.querySelector('.bg-text');
+
+if(hero && character && bgText){
+    hero.addEventListener('mousemove',(e)=>{
+        let x = (window.innerWidth / 2 - e.pageX) / 40;
+        let y = (window.innerHeight / 2 - e.pageY) / 40;
+        character.style.transform = `translateX(-50%) translate(${x}px, ${y}px)`;
+        bgText.style.transform = `translate(-50%,-50%) translate(${x/2}px, ${y/2}px)`;
+    });
+}
+
+/* ================================= */
+/* SCROLL REVEAL ANIMATION */
+/* ================================= */
+const scrollElements = document.querySelectorAll('.scroll-reveal');
+
+function checkScroll() {
+    scrollElements.forEach(el => {
+        const elementTop = el.getBoundingClientRect().top;
+        const windowHeight = window.innerHeight;
+        if(elementTop < windowHeight - 100) {
+            el.classList.add('active');
+        }
+    });
+}
+
+window.addEventListener('scroll', checkScroll);
+window.addEventListener('load', checkScroll);
+
+/* ================================= */
+/* NAVIGATION */
+/* ================================= */
+const heroSection = document.querySelector('.hero');
+const historySection = document.getElementById('historySection');
+const exploreBtn = document.getElementById('exploreBtn');
+const navHome = document.querySelector('.nav-home');
+const navHistory = document.querySelector('.nav-history');
+
+if(exploreBtn){
+    exploreBtn.addEventListener('click', () => {
+        historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+if(navHome){
+    navHome.addEventListener('click', () => {
+        heroSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+if(navHistory){
+    navHistory.addEventListener('click', () => {
+        historySection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+}
+
+document.body.style.overflow = 'auto';
+
+</script>
+
+</body>
+</html>
